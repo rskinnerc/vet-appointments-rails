@@ -3,6 +3,6 @@ class Doctor < ApplicationRecord
   validates :specialization, presence: true
   validates :experience, presence: true
 
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   has_many :users, through: :appointments
 end
