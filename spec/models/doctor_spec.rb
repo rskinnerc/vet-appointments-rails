@@ -1,5 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { Doctor.new(name: 'Some name', specialization: 'Dogs', experience: 2) }
+
+  before { subject.save }
+
+  after(:all) do
+    Doctor.delete_all
+  end
+
+  it 'name should be present' do
+    subject.name = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'specialization should be present' do
+    subject.specialization = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'experience should be present' do
+    subject.experience = nil
+    expect(subject).to_not be_valid
+  end
 end
