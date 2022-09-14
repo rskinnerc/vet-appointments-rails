@@ -4,7 +4,8 @@ RSpec.describe Appointment, type: :model do
   before(:all) do
     @user = User.create(name: 'some name')
     @doctor = Doctor.create(name: 'Some name', specialization: 'Dogs', experience: 2)
-    @appointment = Appointment.create(doctor_id: @doctor.id, user_id: @user.id, date: DateTime.new(2012, 8, 29, 22, 35, 0))
+    @appointment = Appointment.create(doctor_id: @doctor.id, user_id: @user.id,
+                                      date: DateTime.new(2012, 8, 29, 22, 35, 0))
   end
 
   after(:all) do
