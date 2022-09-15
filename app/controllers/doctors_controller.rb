@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   def create
-    @doctor = Doctor.new(doc_params[:name, :specialization, :experience, :price])
+    @doctor = Doctor.new(name: doc_params[:name], specialization: doc_params[:specialization], experience: doc_params[:experience], price: doc_params[:price])
     render json: @doctor.errors.full_messages unless @doctor.save
     render json: 'Succesfully created'
   end
