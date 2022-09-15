@@ -126,3 +126,41 @@
       success: function(json) { }
     });
   ``
+
+*Delete Doctor*
+----
+  Deletes a Doctor instance.
+
+* **URL**
+
+  /doctors/delete
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  { doctor: {"id": INTEGER}}
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `Successfully deleted`
+ 
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      type: 'DELETE',
+      url: '/doctors/delete',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({ doctor: {"id": 1}}),
+      success: function(json) { }
+    });
+  ``
