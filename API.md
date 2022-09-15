@@ -164,3 +164,102 @@
       success: function(json) { }
     });
   ``
+
+*Show Appointments*
+----
+  Returns json data about all appointments for a respective user.
+
+* **URL**
+
+  /appointments/index
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  {"appointment": { "user_id": 1}}
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `[
+  {
+    "id": 2,
+    "user_id": 1,
+    "doctor_id": 3,
+    "date": "2012-08-29T22:35:00.000Z",
+    "created_at": "2022-09-15T16:19:51.466Z",
+    "updated_at": "2022-09-15T16:19:51.466Z",
+    "city": "Bogotá"
+  }
+]`
+ 
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/appointments/index",
+      dataType: "json",
+      type : "GET",
+      data: JSON.stringify({"appointment": { "user_id": 1}}),
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
+
+*Create Appointment*
+----
+  Creates a Appointment instance.
+
+* **URL**
+
+  /appointments/create
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  { "appointment": {
+    "user_id": INT,
+    "doctor_id": INT,
+    "city": "STRING",
+    "date": [YYYY, MM, DD, hh, mm, ss]
+    }
+  }
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `Succesfully created`
+ 
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      type: 'POST',
+      url: '/doctors/create',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({ "appointment": {
+                              "user_id": 1,
+                              "doctor_id": 3,
+                              "city": "Bogotá",
+                              "date": [2012, 8, 29, 22, 35, 0]
+                              }
+                            }),
+      success: function(json) { }
+    });
+  ``
