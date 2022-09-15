@@ -5,7 +5,10 @@ class AppointmentsController < ApplicationController
                                    doctor_id: appointment_params[:doctor_id],
                                    city: appointment_params[:city],
                                    date: DateTime.new(@date[0], @date[1], @date[2], @date[3], @date[4], @date[5]))
-    render json: @appointment.errors.full_messages unless @appointment.save
+    unless @appointment.save
+      render json: @appointment.errors.full_messages
+      return
+    end 
     render json: 'Successfully created'
   end
 
