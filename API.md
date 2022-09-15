@@ -88,3 +88,41 @@
       }
     });
   ```
+
+*Create Doctor*
+----
+  Creates a Doctor instance.
+
+* **URL**
+
+  /doctors/create
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  { doctor: {"name": "STRING", "specialization": "STRING", "experience": INTEGER, "price": FLOAT}}
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `Succesfully created`
+ 
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      type: 'POST',
+      url: '/doctors/create',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({ doctor: {"name": "some name", "specialization": "dogs", "experience": 3, "price": 2.5}}),
+      success: function(json) { }
+    });
+  ``
