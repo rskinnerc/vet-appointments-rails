@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     if User.exists?(name: user_params[:name])
       @user = User.where(name: user_params[:name])
     else
-      @user = User.new(user_params[:name])
+      @user = User.new(name: user_params[:name])
       render json: @user.errors.full_messages unless @user.save
     end
     render json: @user
