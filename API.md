@@ -112,7 +112,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `Succesfully created`
+    **Content:** `Successfully created`
  
 * **Sample Call:**
 
@@ -243,7 +243,7 @@
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `Succesfully created`
+    **Content:** `Successfully created`
  
 * **Sample Call:**
 

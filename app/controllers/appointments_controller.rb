@@ -8,7 +8,7 @@ class AppointmentsController < ApplicationController
     unless @appointment.save
       render json: @appointment.errors.full_messages
       return
-    end 
+    end
     render json: 'Successfully created'
   end
 
