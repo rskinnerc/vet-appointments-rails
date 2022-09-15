@@ -263,3 +263,41 @@
       success: function(json) { }
     });
   ``
+
+*Delete Appointment*
+----
+  Deletes a appointment instance.
+
+* **URL**
+
+  /appointments/delete
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  { appointment: {"id": INTEGER}}
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `Successfully deleted`
+ 
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      type: 'DELETE',
+      url: '/appointments/delete',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({ appointment: {"id": 1}}),
+      success: function(json) { }
+    });
+  ``
