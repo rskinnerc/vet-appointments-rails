@@ -3,7 +3,7 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(name: doc_params[:name], specialization: doc_params[:specialization],
                          experience: doc_params[:experience], price: doc_params[:price])
     render json: @doctor.errors.full_messages unless @doctor.save
-    render json: 'Succesfully created'
+    render json: 'Successfully created'
   end
 
   def index
@@ -12,7 +12,7 @@ class DoctorsController < ApplicationController
 
   def delete
     Doctor.destroy(doc_params[:id])
-    render json: 'Succesfully deleted'
+    render json: 'Successfully deleted'
   end
 
   private
