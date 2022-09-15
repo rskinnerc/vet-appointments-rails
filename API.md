@@ -1,3 +1,46 @@
+*Login/Sign in user*
+----
+  Retrieves user info based on the username or creates it if nonexistent.
+
+* **URL**
+
+  /users/create
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  {user: {name: "STRING"}}
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** `{
+  "id": 2,
+  "name": "STRING",
+  "created_at": "2022-09-15T15:53:34.780Z",
+  "updated_at": "2022-09-15T15:53:34.780Z"
+}`
+ 
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      type: 'POST',
+      url: '/users/create',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({user: {name: "STRING"}}),
+      success: function(json) { }
+    });
+  ```
+
 *Show Doctors*
 ----
   Returns json data about all doctors.
