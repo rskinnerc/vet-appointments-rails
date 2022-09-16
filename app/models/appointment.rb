@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Appointment < ApplicationRecord
   validates :date, presence: true
   validates :user_id, presence: true

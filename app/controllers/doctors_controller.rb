@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(name: doc_params[:name], specialization: doc_params[:specialization],
@@ -8,7 +10,20 @@ class DoctorsController < ApplicationController
   end
 
   def index
-    render json: Doctor.all
+    #render json: Doctor.all
+
+    @doctors = Doctor.all
+    doctors_render=[]
+    doctors_render= @doctors.map { |doctor| 
+        if doctor.photo.attached?
+           doctor.as_json().merge(
+           photo_path: url_for(doctor.photo))
+        else
+         doctor.as_json()
+        end
+        
+          }  
+          render json: doctors_render
   end
 
   def delete
