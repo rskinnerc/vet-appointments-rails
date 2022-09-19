@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @user = User.new(name: user_params[:name])
       
       unless @user.save
-        render json: @user.errors.full_messages 
+        render json: @user.errors.full_messages, status: 400 
         return
       end
     end
