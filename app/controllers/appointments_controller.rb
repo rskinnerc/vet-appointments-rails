@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
                                    city: appointment_params[:city],
                                    date: DateTime.new(@date[0], @date[1], @date[2], @date[3], @date[4], @date[5]))
     unless @appointment.save
-      render json: @appointment.errors.full_messages
+      render json: @appointment.errors.full_messages, status: 400
       return
     end
     render json: 'Successfully created'
