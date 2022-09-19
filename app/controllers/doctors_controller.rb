@@ -4,7 +4,7 @@ class DoctorsController < ApplicationController
                          experience: doc_params[:experience], price: doc_params[:price])
     
     unless @doctor.save
-      render json: @doctor.errors.full_messages 
+      render json: @doctor.errors.full_messages, status: 400 
       return
     end
     render json: 'Successfully created'
