@@ -16,8 +16,12 @@ class DoctorsController < ApplicationController
   end
 
   def delete
-    Doctor.destroy(doc_params[:id])
-    render json: 'Successfully deleted'
+    if Doctor.exists?(doc_params[:id])
+      Doctor.destroy(doc_params[:id])
+      render json: 'Successfully deleted'
+      return
+    end
+    render json: 'Record does not exist, please try again', status: 404
   end
 
   private
