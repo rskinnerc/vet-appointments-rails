@@ -4,9 +4,14 @@ class UsersController < ApplicationController
       @user = User.where(name: user_params[:name])
     else
       @user = User.new(name: user_params[:name])
-      render json: @user.errors.full_messages unless @user.save
+      
+      unless @user.save
+        render json: @user.errors.full_messages 
+        return
+      end
     end
     render json: @user
+    return
   end
 
   private
