@@ -2,8 +2,13 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(name: doc_params[:name], specialization: doc_params[:specialization],
                          experience: doc_params[:experience], price: doc_params[:price])
-    render json: @doctor.errors.full_messages unless @doctor.save
+    
+    unless @doctor.save
+      render json: @doctor.errors.full_messages 
+      return
+    end
     render json: 'Successfully created'
+    return
   end
 
   def index
