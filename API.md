@@ -236,7 +236,7 @@
     "user_id": INT,
     "doctor_id": INT,
     "city": "STRING",
-    "date": [YYYY, MM, DD, hh, mm, ss]
+    "date": "YYYY-MM-DDThh:mm:ss.sssZ"
     }
   }
 
@@ -257,7 +257,8 @@
                               "user_id": 1,
                               "doctor_id": 3,
                               "city": "Bogotá",
-                              "date": [2012, 8, 29, 22, 35, 0]
+                              "date": "2022-09-15T17:20:14.372Z"
+
                               }
                             }),
       success: function(json) { }
