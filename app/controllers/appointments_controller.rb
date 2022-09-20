@@ -1,12 +1,15 @@
 class AppointmentsController < ApplicationController
   def create
-    @date = appointment_params[:date]
+    @date = DateTime.parse(appointment_params[:date])
     @appointment = Appointment.new(user_id: appointment_params[:user_id],
                                    doctor_id: appointment_params[:doctor_id],
                                    city: appointment_params[:city],
-                                   date: DateTime.new(@date[0], @date[1], @date[2], @date[3], @date[4], @date[5]))
-    render json: @appointment.errors.full_messages unless @appointment.save
-    render json: 'Succesfully created'
+                                   date: @date)
+    unless @appointment.save
+      render json: @appointment.errors.full_messages, status: 400
+      return
+    end
+    render json: 'Successfully created'
   end
 
   def index
@@ -16,7 +19,7 @@ class AppointmentsController < ApplicationController
 
   def delete
     Appointment.destroy(appointment_params[:id])
-    render json: 'Succesfully deleted'
+    render json: 'Successfully deleted'
   end
 
   private
