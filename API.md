@@ -72,7 +72,8 @@
                       "experience": 3,
                       "created_at": "2022-09-15T14:53:59.443Z",
                       "updated_at": "2022-09-15T14:53:59.443Z",
-                      "price": 2.5
+                      "price": 2.5,
+                      "photo_path": "http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9a6d03e07e1b3b300e1e969d7b677e5f688eedad/Morning%20session%20group%20block%204.jpg"
                     }
                   ]`
  
@@ -107,7 +108,7 @@
 
 * **Data Params**
 
-  { doctor: {"name": "STRING", "specialization": "STRING", "experience": INTEGER, "price": FLOAT}}
+  { doctor: {"name": "STRING", "specialization": "STRING", "experience": INTEGER, "price": FLOAT, "photo": file}}
 
 * **Success Response:**
 
@@ -121,8 +122,8 @@
       type: 'POST',
       url: '/doctors/create',
       dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify({ doctor: {"name": "some name", "specialization": "dogs", "experience": 3, "price": 2.5}}),
+      contentType: 'multipart/form-data',
+      data: JSON.stringify({ doctor: {"name": "some name", "specialization": "dogs", "experience": 3, "price": 2.5, "photo":"file"}}),
       success: function(json) { }
     });
   ``
