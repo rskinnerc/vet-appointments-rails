@@ -10,7 +10,6 @@ class DoctorsController < ApplicationController
     end
     render json: 'Successfully created'
     nil
-
   end
 
   def index
