@@ -48,10 +48,10 @@ RSpec.describe 'api/api', type: :request do
             run_test!
           end
     
-        #   response '400', 'User not found' do
-        #     let(:user) { { name: '' } }
-        #     run_test!
-        #   end
+           response '400', 'Doctor not found' do
+              let(:doctor) { { specialization:'Vet', experience: 5, price: 1.5} }
+             run_test!
+           end
         end
     end
 
@@ -97,10 +97,10 @@ RSpec.describe 'api/api', type: :request do
             run_test!
           end
     
-        #   response '400', 'User not found' do
-        #     let(:user) { { name: '' } }
-        #     run_test!
-        #   end
+           response '404', 'User not found' do
+             let(:doctor) { { id: 10101 } }
+             run_test!
+           end
         end
     end
     
