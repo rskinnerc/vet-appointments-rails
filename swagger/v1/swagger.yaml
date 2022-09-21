@@ -86,6 +86,36 @@ paths:
                   type: integer
               required:
               - id
+  "/appointments/create":
+    post:
+      summary: Creates a appointment
+      tags:
+      - Appointment
+      parameters: []
+      responses:
+        '200':
+          description: appointment created
+        '400':
+          description: Appointment not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                doctor_id:
+                  type: integer
+                city:
+                  type: string
+                date:
+                  type: string
+              required:
+              - user_id
+              - doctor_id
+              - city
+              - date
 servers:
 - url: http://{defaultHost}
   variables:
