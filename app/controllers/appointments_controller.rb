@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = Appointment.where(user_id: appointment_params[:user_id])
+    @appointments = Appointment.where(user_id: params[:user_id])
     render json: @appointments
   end
 
