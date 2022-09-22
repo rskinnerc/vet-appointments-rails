@@ -52,6 +52,8 @@ paths:
                   type: float
                 photo:
                   type: string
+                description:
+                  type: string
               required:
               - name
               - specialization
@@ -116,6 +118,41 @@ paths:
               - doctor_id
               - city
               - date
+  "/users/{user_id}/appointments":
+    get:
+      summary: Get the appointment
+      tags:
+      - Appointment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: appointments found
+  "/appointments/delete":
+    delete:
+      summary: Appointment deleted
+      tags:
+      - Appointment
+      parameters: []
+      responses:
+        '200':
+          description: Successfully deleted
+        '404':
+          description: Appointment not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
 servers:
 - url: http://{defaultHost}
   variables:
