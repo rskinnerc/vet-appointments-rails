@@ -1,6 +1,12 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/api', type: :request do
+  after(:all) do
+    Appointment.delete_all
+    User.delete_all
+    Doctor.delete_all
+  end
+
   path '/users/create' do
     post 'Creates a user' do
       tags 'User'
@@ -122,7 +128,7 @@ RSpec.describe 'api/api', type: :request do
       }
 
       response '200', 'appointment created' do
-        user = User.last
+        user = User.create(name: 'Pedro222')
         doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
                                description: 'Description1')
         let(:appointment) do
@@ -181,7 +187,7 @@ RSpec.describe 'api/api', type: :request do
       }
 
       response '200', 'Successfully deleted' do
-        user = User.last
+        user = User.create(name: 'Juan333')
         doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
                                description: 'Description1')
         appointment = Appointment.create(user_id: user.id, doctor_id: doctor.id, city: 'Santo Domingo',
