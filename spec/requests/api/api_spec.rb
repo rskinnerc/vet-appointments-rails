@@ -117,8 +117,6 @@ RSpec.describe 'api/api', type: :request do
   end
 
   path '/appointments/create' do
-
-
     post 'Creates a appointment' do
       tags 'Appointment'
       consumes 'application/json'
@@ -153,7 +151,6 @@ RSpec.describe 'api/api', type: :request do
       parameter name: :user_id, in: :path, type: :integer
 
       response '200', 'appointments found' do
-        user = User.last
         let(:user_id) { @user.id }
         # rubocop :disable Lint/UselessAssignment
         after do |example|
