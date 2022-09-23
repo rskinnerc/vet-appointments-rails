@@ -1,7 +1,13 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/api', type: :request do
-  after(:all) do
+  before :each do
+    @user = User.create(name: 'Pedro222')
+    @doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
+                            description: 'Description1')
+  end
+
+  after(:each) do
     Appointment.delete_all
     User.delete_all
     Doctor.delete_all
@@ -98,9 +104,7 @@ RSpec.describe 'api/api', type: :request do
       }
 
       response '200', 'doctor deleted' do
-        doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
-                               description: 'Description1')
-        let(:doctor) { { id: doctor.id } }
+        let(:doctor) { { id: @doctor.id } }
 
         run_test!
       end
@@ -113,6 +117,8 @@ RSpec.describe 'api/api', type: :request do
   end
 
   path '/appointments/create' do
+
+
     post 'Creates a appointment' do
       tags 'Appointment'
       consumes 'application/json'
@@ -128,20 +134,14 @@ RSpec.describe 'api/api', type: :request do
       }
 
       response '200', 'appointment created' do
-        user = User.create(name: 'Pedro222')
-        doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
-                               description: 'Description1')
         let(:appointment) do
-          { user_id: user.id, doctor_id: doctor.id, city: 'Santo Domingo', date: '2022-09-15T16:19:51.466Z' }
+          { user_id: @user.id, doctor_id: @doctor.id, city: 'Santo Domingo', date: '2022-09-15T16:19:51.466Z' }
         end
         run_test!
       end
 
-      response '400', 'Appointment not found' do
-        doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
-                               description: 'Description1')
-        user = User.create(name: 'Juan12')
-        let(:appointment) { { user_id: user.id, doctor_id: doctor.id, date: '2022-09-15T14:53:59.443Z' } }
+      response '400', 'ABad request' do
+        let(:appointment) { { user_id: @user.id, doctor_id: @doctor.id, date: '2022-09-15T14:53:59.443Z' } }
         run_test!
       end
     end
@@ -154,8 +154,7 @@ RSpec.describe 'api/api', type: :request do
 
       response '200', 'appointments found' do
         user = User.last
-        puts user.name
-        let(:user_id) { user.id }
+        let(:user_id) { @user.id }
         # rubocop :disable Lint/UselessAssignment
         after do |example|
           content = example.metadata[:response][:content] || {}
@@ -175,6 +174,10 @@ RSpec.describe 'api/api', type: :request do
     end
   end
   path '/appointments/delete' do
+    before do
+      @appointment = Appointment.create(user_id: @user.id, doctor_id: @doctor.id, city: 'Santo Domingo',
+                                        date: '2022-09-15T16:19:51.466Z')
+    end
     delete 'Appointment deleted' do
       tags 'Appointment'
       consumes 'application/json'
@@ -187,12 +190,7 @@ RSpec.describe 'api/api', type: :request do
       }
 
       response '200', 'Successfully deleted' do
-        user = User.create(name: 'Juan333')
-        doctor = Doctor.create(name: 'Juan', specialization: 'Vet', experience: 5, price: 1.5,
-                               description: 'Description1')
-        appointment = Appointment.create(user_id: user.id, doctor_id: doctor.id, city: 'Santo Domingo',
-                                         date: '2022-09-15T16:19:51.466Z')
-        let(:appointment) { { id: appointment.id } }
+        let(:appointment) { { id: @appointment.id } }
 
         run_test!
       end
