@@ -13,18 +13,22 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    @appointments = Appointment.where(user_id: appointment_params[:user_id])
+    @appointments = Appointment.where(user_id: params[:user_id])
     render json: @appointments
   end
 
   def delete
-    Appointment.destroy(appointment_params[:id])
-    render json: 'Successfully deleted'
+    if Appointment.exists?(appointment_params[:id])
+      Appointment.destroy(appointment_params[:id])
+      render json: 'Successfully deleted'
+      return
+    end
+    render json: 'Record does not exist, please try again', status: 404
   end
 
   private
 
   def appointment_params
-    params.require(:appointment).permit(:id, :user_id, :doctor_id, :city, date: [])
+    params.require(:appointment).permit(:id, :user_id, :doctor_id, :city, :date)
   end
 end

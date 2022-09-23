@@ -1,7 +1,8 @@
 class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(name: doc_params[:name], specialization: doc_params[:specialization],
-                         experience: doc_params[:experience], price: doc_params[:price])
+                         experience: doc_params[:experience], price: doc_params[:price],
+                         description: doc_params[:description])
 
     @doctor.photo.attach(params[:doctor][:photo])
     unless @doctor.save
@@ -38,6 +39,6 @@ class DoctorsController < ApplicationController
   private
 
   def doc_params
-    params.require(:doctor).permit(:id, :name, :specialization, :experience, :price, :photo)
+    params.require(:doctor).permit(:id, :name, :specialization, :experience, :price, :photo, :description)
   end
 end
