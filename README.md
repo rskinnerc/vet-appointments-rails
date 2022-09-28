@@ -2,12 +2,14 @@
 
 # Vet-Appointments App
 
-This is an app in wich you can reserve a appointment for Veterinarian, create a Doctor, delete a Doctor and show all your appointments for Veterinarian. This app was created separating the Fron-End and the Back-End in two repositories. This is the repositorie of the back-end API.
+This is an app in which you can reserve an appointment with a Veterinarian, create a Doctor, delete a Doctor and show all your appointments. This app was created separating the Fron-End and the Back-End in two repositories. This is the repository of the back-end API and you can find the Front-End repository [here](https://github.com/rskinnerc/vet-appointments-react)
 
 ## Built With
 
 - Ruby
 - Rails
+- Rspec
+- Rswag
 
 ## Getting Started
 
@@ -48,7 +50,11 @@ gem install bundler
 ```
 bundle install
 ```
-
+- Run Database Migrations
+  
+```
+rails db:migrate
+```
 ### Usage
 
 You can get the app running locally by opening a local server:
@@ -77,7 +83,7 @@ ruby bin/rspec
 
 - GitHub: [@rskinnerc](https://github.com/rskinnerc)
 - Twitter: [@XSkinner](https://twitter.com/XSkinner)
-
+- LinkedIn: [Ronald Skinner](https://www.linkedin.com/in/rskinnerc)
 
 👤 **Juan Francisco Rosario Suli**
 
