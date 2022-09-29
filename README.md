@@ -50,6 +50,12 @@ gem install bundler
 ```
 bundle install
 ```
+- Set up database configuration in config/database.yml and create it
+  
+```
+rails db:create
+```
+
 - Run Database Migrations
   
 ```
