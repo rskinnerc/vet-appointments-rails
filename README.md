@@ -2,7 +2,10 @@
 
 # Vet-Appointments App
 
-This is an app in which you can reserve an appointment with a Veterinarian, create a Doctor, delete a Doctor and show all your appointments. This app was created separating the Fron-End and the Back-End in two repositories. This is the repository of the back-end API and you can find the Front-End repository [here](https://github.com/rskinnerc/vet-appointments-react)
+This is an app in which you can reserve an appointment with a Veterinarian, create a Doctor, delete a Doctor and show all your appointments. This app was created separating the Fron-End and the Back-End in two repositories. This is the repository of the back-end API and you can find the Front-End repository [here](https://github.com/rskinnerc/vet-appointments-react) and the documentation of the API [here](https://vets-appointment.herokuapp.com/api-docs/index.html)
+
+![image](https://user-images.githubusercontent.com/93448210/193123569-d8713d5d-2046-4736-9b50-07504efefa3b.png)
+
 
 ## Built With
 
