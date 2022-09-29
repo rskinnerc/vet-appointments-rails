@@ -6,7 +6,18 @@ This is an app in which you can reserve an appointment with a Veterinarian, crea
 
 ![image](https://user-images.githubusercontent.com/93448210/193123569-d8713d5d-2046-4736-9b50-07504efefa3b.png)
 
+## KanBan Board
+ - Link to the [Kanban Board](https://github.com/users/rskinnerc/projects/9).
+ ![image](https://user-images.githubusercontent.com/26911718/190231668-b696de99-c1d8-47bc-b5ff-72ec1a25a420.png)
 
+ 
+ - This group was compossed by 4 people: 
+    - [Ronald Skinner](https://github.com/rskinnerc)
+    - [Juan Francisco Rosario Suli](https://github.com/jrosario19)
+    - [Maximiliano Diaz](https://github.com/mistermaxis)
+    - [Alejandro Neira](https://github.com/AlejandroNeira98)
+
+ 
 ## Built With
 
 - Ruby
