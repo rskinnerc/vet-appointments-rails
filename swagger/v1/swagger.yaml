@@ -1,0 +1,160 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users/create":
+    post:
+      summary: Creates a user
+      tags:
+      - User
+      parameters: []
+      responses:
+        '200':
+          description: user created
+        '400':
+          description: User not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+  "/doctors/create":
+    post:
+      summary: Creates a doctor
+      tags:
+      - Doctor
+      parameters: []
+      responses:
+        '200':
+          description: doctor created
+        '400':
+          description: Doctor not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                specialization:
+                  type: string
+                experience:
+                  type: integer
+                price:
+                  type: float
+                photo:
+                  type: string
+                description:
+                  type: string
+              required:
+              - name
+              - specialization
+              - experience
+              - price
+  "/doctors/index":
+    get:
+      summary: Get the doctors
+      tags:
+      - Doctor
+      responses:
+        '200':
+          description: doctors found
+  "/doctors/delete":
+    delete:
+      summary: Doctor deleted
+      tags:
+      - Doctor
+      parameters: []
+      responses:
+        '200':
+          description: doctor deleted
+        '404':
+          description: User not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
+  "/appointments/create":
+    post:
+      summary: Creates a appointment
+      tags:
+      - Appointment
+      parameters: []
+      responses:
+        '200':
+          description: appointment created
+        '400':
+          description: Appointment not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                doctor_id:
+                  type: integer
+                city:
+                  type: string
+                date:
+                  type: string
+              required:
+              - user_id
+              - doctor_id
+              - city
+              - date
+  "/users/{user_id}/appointments":
+    get:
+      summary: Get the appointment
+      tags:
+      - Appointment
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: appointments found
+  "/appointments/delete":
+    delete:
+      summary: Appointment deleted
+      tags:
+      - Appointment
+      parameters: []
+      responses:
+        '200':
+          description: Successfully deleted
+        '404':
+          description: Appointment not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+              required:
+              - id
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
